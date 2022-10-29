@@ -14,7 +14,6 @@ const SignupForm = (props) => {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
-      navigate("/News");
     } catch (error) {
       console.log(error);
     }
