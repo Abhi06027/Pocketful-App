@@ -5,7 +5,7 @@ import Googlelogo from "../../src/Assets/Googlelogo.png";
 import { BsArrowRight } from "react-icons/bs";
 import Pocketful from "../../src/Assets/Pocketful.png";
 import { UserAuth } from "../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = (props) => {
   const [email, setEmail] = useState("");
