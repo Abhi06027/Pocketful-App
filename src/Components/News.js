@@ -1,11 +1,24 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { UserAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 import Newsitems from "./Newsitems";
-
 const News = () => {
   const [users, serUsers] = useState([]);
+  const { user, logout } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/");
+      console.log("You are logged out");
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
 
   useEffect(() => {
     const getUsers = async () => {
@@ -28,9 +41,13 @@ const News = () => {
 
   return (
     <div className="my-3">
-      <h1 className="text-center text-black text-4xl font-semibold font-dm mb-8 uppercase ">
+      <h1 className="text-center text-black text-4xl font-semibold font-dm mt-10 uppercase ">
         Top Headlines
       </h1>
+      <div className=" items-center text-black text-sm font-semibold font-dm  uppercase  text-right my-4  pr-6  ">
+        {/* <p>User Email : {user && user.email}</p> */}
+        <button onClick={handleLogout}> Log Out</button>
+      </div>
       <div className=" flex justify-center  mx-5">
         <div className="grid gap-10  grid-cols-1 md:grid-cols-2   lg:grid-cols-3">
           {users.map((curElem) => {
