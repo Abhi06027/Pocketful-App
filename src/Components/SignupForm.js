@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect, useState } from "react";
 // import Inputfield from "./Widgets/Inputfield";
 // import Button from "./Widgets/Button";
@@ -12,6 +14,7 @@ const SignupForm = (props) => {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
+      navigate("/News");
     } catch (error) {
       console.log(error);
     }
