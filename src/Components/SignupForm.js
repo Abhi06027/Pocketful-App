@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import React, { useEffect, useState } from "react";
 
 import Googlelogo from "../../src/Assets/Googlelogo.png";
@@ -13,16 +11,11 @@ const SignupForm = (props) => {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
+      navigate("/News");
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (user != null) {
-      navigate("/News");
-    }
-  }, [user]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
