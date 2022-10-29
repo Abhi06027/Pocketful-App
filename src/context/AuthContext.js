@@ -6,10 +6,20 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+} from "firebase/auth";
 
 const UserContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    // signInWithPopup(auth, provider);
+    signInWithRedirect(auth, provider);
+  };
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -34,7 +44,7 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ createUser, user, logout }}>
+    <UserContext.Provider value={{ googleSignIn, createUser, user, logout }}>
       {children}
     </UserContext.Provider>
   );

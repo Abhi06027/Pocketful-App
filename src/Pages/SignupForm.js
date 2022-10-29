@@ -4,6 +4,7 @@ import Button from "../Components/Widgets/Button";
 import Googlelogo from "../../Assets/Googlelogo.png";
 import { BsArrowRight } from "react-icons/bs";
 import Pocketful from "../../Assets/Pocketful.png";
+
 const SignupForm = (props) => {
   return (
     <form className="bg-[#6249a3] flex h-screen justify-center items-center ">

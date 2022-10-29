@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import Inputfield from "./Widgets/Inputfield";
 // import Button from "./Widgets/Button";
 import Googlelogo from "../../src/Assets/Googlelogo.png";
@@ -8,6 +8,21 @@ import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const SignupForm = (props) => {
+  const { googleSignIn, user } = UserAuth();
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (user != null) {
+      navigate("/News");
+    }
+  }, [user]);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,7 +45,7 @@ const SignupForm = (props) => {
         <p className="text-xs text-center">
           Lets log in to launch your Automation
         </p>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="flex justify-center my-2">
             <input
               onChange={(e) => setEmail(e.target.value)}
@@ -58,13 +73,13 @@ const SignupForm = (props) => {
             <p className="cursor-pointer">Create Account</p>
             <p className="cursor-pointer">Forgot Password?</p>
           </div>
-          <div className="flex justify-center my-3">
+          <div onClick={handleSubmit} className="flex justify-center my-3">
             <div className="bg-[#7758c6] hover:bg-purple-500 p-2 text-center  w-80 text-white rounded-md cursor-pointer">
               <button>Sign in</button>
             </div>
           </div>
         </form>
-        <div className="flex justify-center my-3">
+        <div onClick={handleGoogleSignIn} className="flex justify-center my-3">
           <div className="flex justify-between items-center p-2 shadow-sm shadow-purple-200 font-normal w-80 text-black rounded-md cursor-pointer">
             <div className="flex items-center space-x-2">
               <img className=" w-8 h-8" src={Googlelogo} alt="" />
