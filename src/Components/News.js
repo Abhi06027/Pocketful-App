@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Newsitems from "./Newsitems";
 const News = () => {
   const [users, serUsers] = useState([]);
-  const { user, logout } = UserAuth();
+  const { logout } = UserAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
