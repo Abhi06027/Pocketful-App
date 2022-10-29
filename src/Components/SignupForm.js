@@ -5,26 +5,22 @@ import Googlelogo from "../../src/Assets/Googlelogo.png";
 import { BsArrowRight } from "react-icons/bs";
 import Pocketful from "../../src/Assets/Pocketful.png";
 import { UserAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignupForm = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [setError] = useState("");
 
   const { createUser } = UserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+
     try {
       await createUser(email, password);
       navigate("/News");
-    } catch (e) {
-      setError(e.message);
-      console.log(e.message);
-    }
+    } catch (e) {}
   };
   return (
     <div className="bg-[#6249a3] flex h-screen justify-center items-center ">
