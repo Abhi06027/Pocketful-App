@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect, useState } from "react";
-// import Inputfield from "./Widgets/Inputfield";
-// import Button from "./Widgets/Button";
+
 import Googlelogo from "../../src/Assets/Googlelogo.png";
 import { BsArrowRight } from "react-icons/bs";
 import Pocketful from "../../src/Assets/Pocketful.png";
